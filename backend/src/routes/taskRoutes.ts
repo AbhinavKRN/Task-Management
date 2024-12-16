@@ -11,12 +11,9 @@ const router = express.Router();
 
 router.use(protect);
 
-router.route('/')
-  .get(getTasks)
-  .post(createTask);
-
-router.route('/:id')
-  .put(updateTask)
-  .delete(deleteTask);
+router.post('/', (req, res) => createTask(req, res));
+router.get('/', (req, res) => getTasks(req, res));
+router.put('/:id', (req, res) => updateTask(req, res));
+router.delete('/:id', (req, res) => deleteTask(req, res));
 
 export default router;
